@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const http = require('http');
 const connectDB = require('./config/db');
 const History = require('./History');
@@ -50,11 +51,12 @@ io.on('connect', socket => {
 
     socket.emit('message', {
       user: 'admin',
-      text: `${user.name}, welcome to room ${user.room}.`
+      text: `어서오세요 ${user.name}님, 여기는 한능검 대비 채팅방입니다.`
     });
-    socket.broadcast
-      .to(user.room)
-      .emit('message', { user: 'admin', text: `${user.name} has joined!` });
+    socket.broadcast.to(user.room).emit('message', {
+      user: 'admin',
+      text: `${user.name}님이 입장했습니다.`
+    });
 
     io.to(user.room).emit('roomData', {
       room: user.room,
@@ -77,8 +79,8 @@ io.on('connect', socket => {
 
     if (user) {
       io.to(user.room).emit('message', {
-        user: 'Admin',
-        text: `${user.name} has left.`
+        user: 'admin',
+        text: `${user.name}님이 방을 나갔습니다.`
       });
       io.to(user.room).emit('roomData', {
         room: user.room,
@@ -87,6 +89,15 @@ io.on('connect', socket => {
     }
   });
 });
+
+// static assets in production
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 server.listen(process.env.PORT || 5000, () =>
   console.log(`Server has started.`)

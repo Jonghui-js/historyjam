@@ -8,7 +8,7 @@ const InfoBar = ({ room, users }) => (
     <div className='leftInnerContainer'>
       <img className='onlineIcon' src={onlineIcon} alt='online icon' />
       <span style={{ fontSize: '20px' }}>
-        {room === 'basic' ? '기본' : '심화'}
+        {room === 'basic' ? '기본' : '심화'}[{users}명]
       </span>
     </div>
     <div className='rightInnerContainer'>

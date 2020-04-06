@@ -8,8 +8,8 @@ const addUser = ({ id, name, room }) => {
     user => user.room === room && user.name === name
   );
 
-  if (!name || !room) return { error: 'Username and room are required.' };
-  if (existingUser) return { error: 'Username is taken.' };
+  if (!name || !room) return { error: '닉네임을 입력하세요' };
+  if (existingUser) return { error: '이미 존재하는 닉네임입니다' };
 
   const user = { id, name, room };
 

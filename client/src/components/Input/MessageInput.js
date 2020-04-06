@@ -5,13 +5,13 @@ const MessageInput = ({ setMessage, sendMessage, message }) => (
     <input
       className='input'
       type='text'
-      placeholder='Type a message...'
+      placeholder='메세지를 입력하세요'
       value={message}
       onChange={({ target: { value } }) => setMessage(value)}
       onKeyPress={event => (event.key === 'Enter' ? sendMessage(event) : null)}
     />
     <button className='sendButton' onClick={e => sendMessage(e)}>
-      Send
+      보내기
     </button>
   </form>
 );
