@@ -1,7 +1,7 @@
 {
   "name": "historyjam",
   "version": "1.0.0",
-  "description": "",
+  "description": "korean history web site",
   "main": "server.js",
   "scripts": {
     "start": "node server",
