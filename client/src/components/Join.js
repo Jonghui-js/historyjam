@@ -13,26 +13,29 @@ export default function SignIn() {
           placeholder='Name'
           className='joinInput'
           type='text'
-          onChange={event => setName(event.target.value)}
+          onChange={(event) => setName(event.target.value)}
         />
       </div>
-      <select
-        name='room'
-        onChange={e => setRoom(e.target.value)}
-        style={{
-          width: '200px',
-          height: '30px',
-          display: 'block',
-          justifyContent: 'center',
-          margin: '10px auto'
-        }}
-      >
-        <option value='advanced'>심화</option>
-        <option value='basic'>기본</option>
-      </select>
+      <div className='room-select'>
+        <select
+          name='room'
+          onChange={(e) => setRoom(e.target.value)}
+          style={{
+            width: '200px',
+            height: '30px',
+            display: 'block',
+            justifyContent: 'center',
+            margin: '10px auto',
+            border: '1px solid black',
+          }}
+        >
+          <option value='advanced'>심화</option>
+          <option value='basic'>기본</option>
+        </select>
+      </div>
 
       <Link
-        onClick={e => (!name || !room ? e.preventDefault() : null)}
+        onClick={(e) => (!name || !room ? e.preventDefault() : null)}
         to={`/chat?name=${name}&room=${room}`}
       >
         <button className={'button mt-20'} type='submit'>

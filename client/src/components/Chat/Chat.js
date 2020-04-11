@@ -23,7 +23,7 @@ const Chat = ({ location }) => {
     setRoom(room);
     setName(name);
 
-    socket.emit('join', { name, room }, error => {
+    socket.emit('join', { name, room }, (error) => {
       if (error) {
         alert(error);
       }
@@ -31,8 +31,8 @@ const Chat = ({ location }) => {
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on('message', message => {
-      setMessages(messages => [...messages, message]);
+    socket.on('message', (message) => {
+      setMessages((messages) => [...messages, message]);
     });
 
     socket.on('roomData', ({ users }) => {
@@ -40,7 +40,7 @@ const Chat = ({ location }) => {
     });
   }, []);
 
-  const sendMessage = event => {
+  const sendMessage = (event) => {
     event.preventDefault();
 
     if (message) {

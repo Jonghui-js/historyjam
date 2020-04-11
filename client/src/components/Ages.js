@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 const Ages = () => {
   const [age, setAge] = useState(null);
-  const onClick = e => {
+  const onClick = (e) => {
     setAge(e.target.value);
   };
   return (
-    <Button.Group widths='7' className='ages'>
+    <Button.Group widths='7' className='ages' size='tiny'>
       >
       <Link to={`/search?age=age1`}>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='age1'
           style={
             age === 'age1'
@@ -25,7 +25,7 @@ const Ages = () => {
       </Link>
       <Link to={`/search?age=age2`}>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='age2'
           active={age === 'age2'}
           style={
@@ -39,7 +39,7 @@ const Ages = () => {
       </Link>
       <Link to={`/search?age=age3`}>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='age3'
           style={
             age === 'age3'
@@ -52,7 +52,7 @@ const Ages = () => {
       </Link>
       <Link to={`/search?age=age4`}>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='age4'
           style={
             age === 'age4'
@@ -65,7 +65,7 @@ const Ages = () => {
       </Link>
       <Link to={`/search?age=age5`}>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='age5'
           style={
             age === 'age5'
@@ -78,7 +78,7 @@ const Ages = () => {
       </Link>
       <Link to={`/search?age=age6`}>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='age6'
           style={
             age === 'age6'
@@ -91,7 +91,7 @@ const Ages = () => {
       </Link>
       <Link to='/join'>
         <Button
-          onClick={event => onClick(event)}
+          onClick={(event) => onClick(event)}
           value='chat'
           style={
             age === 'chat'
