@@ -14,7 +14,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 app.use(
   express.json({
-    extended: false
+    extended: false,
   })
 );
 connectDB();
@@ -31,7 +31,7 @@ app.get('/search', async (req, res) => {
         : 0;
     const currentAge = await History.find({ age: age }, undefined, {
       skip,
-      limit: 5
+      limit: 5,
     }).sort({ year: 1 });
     const loading = false;
     res.status(200).send({ currentAge, loading });
@@ -41,7 +41,7 @@ app.get('/search', async (req, res) => {
 });
 
 //socket 채팅
-io.on('connect', socket => {
+io.on('connect', (socket) => {
   socket.on('join', ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
 
@@ -51,16 +51,16 @@ io.on('connect', socket => {
 
     socket.emit('message', {
       user: 'admin',
-      text: `어서오세요 ${user.name}님, 여기는 한능검 대비 채팅방입니다.`
+      text: `어서오세요 ${user.name}님, 여기는 한능검 대비 채팅방입니다.`,
     });
     socket.broadcast.to(user.room).emit('message', {
       user: 'admin',
-      text: `${user.name}님이 입장했습니다.`
+      text: `${user.name}님이 입장했습니다.`,
     });
 
     io.to(user.room).emit('roomData', {
       room: user.room,
-      users: getUsersInRoom(user.room)
+      users: getUsersInRoom(user.room),
     });
 
     callback();
@@ -80,17 +80,15 @@ io.on('connect', socket => {
     if (user) {
       io.to(user.room).emit('message', {
         user: 'admin',
-        text: `${user.name}님이 방을 나갔습니다.`
+        text: `${user.name}님이 방을 나갔습니다.`,
       });
       io.to(user.room).emit('roomData', {
         room: user.room,
-        users: getUsersInRoom(user.room)
+        users: getUsersInRoom(user.room),
       });
     }
   });
 });
-
-// static assets in production
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
