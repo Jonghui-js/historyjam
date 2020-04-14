@@ -27,9 +27,9 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: koreanhistoryjam-ci
     region: ap-northeast-2
-    skip_cleanup: true
+    cleanup: true
     local_dir: deploy
-    wait-until-deployed: true
+    wait_until_deployed: true
     on:
       repo: jonghui-js/historyjam
       branch: master
@@ -42,7 +42,7 @@ deploy:
     application: koreanhistoryjam
     deployment_group: koreanhistoryjam-group
     region: ap-northeast-2
-    wait-until-deployed: true
+    wait_until_deployed: true
     on:
       repo: jonghui-js/historyjam
       branch: master
