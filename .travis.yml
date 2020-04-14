@@ -1,12 +1,12 @@
 language: node_js
 node_js:
   - '12.14'
-dist: trusty
 before_install:
   - openssl aes-256-cbc -K $encrypted_a7974dd46f9e_key -iv $encrypted_a7974dd46f9e_iv
     -in default.json.enc -out config/default.json -d
   - npm i -g npm@6.13.4
-
+script:
+  - echo "skipping tests"
 services:
   - mongodb
 cache:
@@ -18,7 +18,7 @@ install:
   - npm run build
 before_deploy:
   - rm -rf node_modules
-  - zip -r historyjam *
+  - zip -r historyjam ./*
   - mkdir -p deploy
   - mv historyjam.zip deploy/historyjam.zip
 deploy:
