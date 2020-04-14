@@ -31,7 +31,7 @@ const Cards = ({ location }) => {
     fetchData();
   }, [skip]);
 
-  const handleScroll = e => {
+  const handleScroll = (e) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     if (offsetHeight + scrollTop === scrollHeight) {
       setSkip(cards.length);
@@ -44,7 +44,7 @@ const Cards = ({ location }) => {
     </Loader>
   ) : (
     <div className='cards' onScroll={handleScroll}>
-      {cards.map(card => (
+      {cards.map((card) => (
         <Item
           year={card.year}
           name={card.name}
