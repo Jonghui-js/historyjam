@@ -5,7 +5,6 @@ import { Loader } from 'semantic-ui-react';
 
 const Cards = ({ location }) => {
   const [cards, setCards] = useState([]);
-  const [skip, setSkip] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,32 +17,12 @@ const Cards = ({ location }) => {
     fetchData();
   }, [location]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/search${location.search}&skip=${skip}`);
-        setCards([...cards, ...res.data.currentAge]);
-        setLoading(res.data.loading);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, [skip]);
-
-  const handleScroll = (e) => {
-    const { offsetHeight, scrollTop, scrollHeight } = e.target;
-    if (offsetHeight + scrollTop === scrollHeight) {
-      setSkip(cards.length);
-    }
-  };
-
   return loading ? (
     <Loader active size='large'>
       Loading...
     </Loader>
   ) : (
-    <div className='cards' onScroll={handleScroll}>
+    <div className='card-container'>
       {cards.map((card) => (
         <Item
           year={card.year}

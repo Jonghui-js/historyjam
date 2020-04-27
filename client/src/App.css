@@ -8,6 +8,7 @@ body {
   text-align: center;
   background-color: white;
   font-family: 'Do Hyeon', sans-serif;
+  height: 100%;
 }
 .nav {
   display: block;
@@ -24,16 +25,17 @@ body {
     rgb(199, 228, 245) 92%
   );
 }
-.nav h1 {
-  margin: 10px;
-}
-.nav a {
-  margin: auto;
-}
 
 .subnav {
   font-size: 1rem;
   color: dimgrey;
+}
+.ages a {
+  color: black;
+}
+.ages {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
 }
 
 .no-age {
@@ -41,26 +43,18 @@ body {
   margin-top: 10rem;
 }
 
-.cards {
+.card-container {
+  padding: 0 20px;
+  font-size: 0.9rem;
+}
+.ui.card.fluid {
+  margin: 10px auto;
+  justify-content: center;
   max-width: 700px;
-  margin: auto;
-  margin-top: 1.5rem;
-  padding: 0 3rem;
-  width: 100%;
-  overflow-y: scroll;
-  height: 60vh;
-}
-
-.cards::-webkit-scrollbar {
-  display: none;
-}
-
-.ui.card {
-  background-color: white;
   font-family: 'Do Hyeon', sans-serif;
-  border: 1px solid rgb(110, 106, 106);
+  border-radius: 0;
+  border: 1px solid rgb(3, 0, 0);
 }
-
 /* join */
 
 .join-container {
@@ -118,41 +112,29 @@ body {
 button:focus {
   outline: 0;
 }
-
 /* chat css */
 .outerContainer {
+  margin-top: 20px;
+  margin: auto;
   display: flex;
   justify-content: center;
-  height: 75vmin;
+  height: 400px;
+}
+.messages {
+  padding: 0;
+  overflow-y: scroll;
+  flex: auto;
 }
 
 .container {
   display: flex;
+  width: 80%;
   flex-direction: column;
   justify-content: space-between;
   background: #ffffff;
-  width: 40%;
   box-shadow: -6px -6px 20px rgba(255, 255, 255, 1),
     6px 6px 20px rgba(0, 0, 0, 0.5);
   background-color: white;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .outerContainer {
-    height: 400px;
-  }
-
-  .container {
-    height: 90%;
-    width: 90%;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 1200px) {
-  .container {
-    width: 80%;
-    height: 95%;
-  }
 }
 
 /* info bar */
@@ -160,13 +142,9 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: linear-gradient(
-    0deg,
-    rgb(250, 245, 245) 23.8%,
-    rgb(186, 222, 243) 92%
-  );
-  height: 60px;
+  height: 50px;
   width: 100%;
+  border-bottom: 1px solid black;
 }
 
 .leftInnerContainer {
@@ -295,11 +273,4 @@ select:focus {
 
 .backgroundLight {
   background: #f5f1f1;
-}
-
-/* all messages */
-.messages {
-  padding: 5% 0;
-  overflow: auto;
-  flex: auto;
 }

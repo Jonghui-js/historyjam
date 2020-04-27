@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import korea from './korea.png';
 import { Link } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 const Nav = () => {
   const [age, setAge] = useState(null);
   const onClick = (e) => {
-    setAge(e.target.value);
+    setAge(e.target.innerText);
   };
   return (
     <>
@@ -14,104 +14,95 @@ const Nav = () => {
         <Link to='/'>
           <img src={korea} alt='logo' style={{ width: '50px' }} />
         </Link>
-        <h1>Koean History Jam</h1>
+        <h3 style={{ margin: '0' }}>Koean History Jam</h3>
         <p className='subnav'>한국사능력검정시험 대비 사이트</p>
-        <Button.Group widths='7' className='ages' size='tiny'>
-          >
+        <div className='ages'>
           <Link to={`/search?age=age1`}>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='age1'
               style={
-                age === 'age1'
+                age === '삼국시대'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               삼국시대
-            </Button>
+            </div>
           </Link>
           <Link to={`/search?age=age2`}>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='age2'
-              active={age === 'age2'}
               style={
-                age === 'age2'
+                age === '통일신라'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               통일신라
-            </Button>
+            </div>
           </Link>
           <Link to={`/search?age=age3`}>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='age3'
               style={
-                age === 'age3'
+                age === '고랴'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               고려
-            </Button>
+            </div>
           </Link>
           <Link to={`/search?age=age4`}>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='age4'
               style={
-                age === 'age4'
+                age === '조선'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               조선
-            </Button>
+            </div>
           </Link>
           <Link to={`/search?age=age5`}>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='age5'
               style={
-                age === 'age5'
+                age === '개항기'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               개항기
-            </Button>
+            </div>
           </Link>
           <Link to={`/search?age=age6`}>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='age6'
               style={
-                age === 'age6'
+                age === '현대'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               현대
-            </Button>
+            </div>
           </Link>
           <Link to='/join'>
-            <Button
+            <div
               onClick={(event) => onClick(event)}
-              value='chat'
               style={
-                age === 'chat'
+                age === '채팅'
                   ? { backgroundColor: 'black', color: 'white' }
-                  : { backgroundColor: 'transparent' }
+                  : null
               }
             >
               <Icon name='chat' />
-              시험후기
-            </Button>
+              채팅
+            </div>
           </Link>
-        </Button.Group>
+        </div>
       </div>
     </>
   );
