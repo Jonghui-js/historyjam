@@ -4,11 +4,13 @@ const path = require('path');
 const server = require('http').createServer(app);
 require('./config/db')();
 const History = require('./History');
+const bodyParser = require('body-parser');
 const io = require('socket.io')(server);
 const cors = require('cors');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/search', async (req, res) => {
@@ -17,6 +19,7 @@ app.get('/search', async (req, res) => {
     const currentAge = await History.find({ age: age }).sort({ year: 1 });
     const loading = false;
     res.status(200).send({ currentAge, loading });
+    console.log('server refrel');
   } catch (err) {
     console.log(err);
   }

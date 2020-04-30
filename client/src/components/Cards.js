@@ -9,6 +9,15 @@ const Cards = ({ location }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const res = await axios.get(`/search${location.search}`);
+      setCards(res.data.currentAge);
+      setLoading(res.data.loading);
+    };
+    fetchData();
+  }, [location]);
+
+  /*useEffect(() => {
+    const fetchData = async () => {
       setCards([]);
       const res = await axios.get(`/search${location.search}`);
       setCards(res.data.currentAge);
@@ -16,6 +25,9 @@ const Cards = ({ location }) => {
     };
     fetchData();
   }, [location]);
+  */
+
+  localStorage.setItem('age', location.search.slice(5, 9));
 
   return loading ? (
     <Loader active size='large'>
