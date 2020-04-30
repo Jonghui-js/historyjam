@@ -9,16 +9,6 @@ const Cards = ({ location }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    const fetchData = async () => {
-      const res = await axios.get(`/search${location.search}`);
-      setCards(res.data.currentAge);
-      setLoading(res.data.loading);
-    };
-    fetchData();
-  }, [location]);
-
-  /*useEffect(() => {
     const fetchData = async () => {
       setCards([]);
       const res = await axios.get(`/search${location.search}`);
@@ -26,8 +16,7 @@ const Cards = ({ location }) => {
       setLoading(res.data.loading);
     };
     fetchData();
-  }, [location]);
-  */
+  }, []);
 
   localStorage.setItem('age', location.search.slice(5, 9));
 
@@ -38,7 +27,7 @@ const Cards = ({ location }) => {
   ) : (
     <div className='card-container'>
       {cards.map((card) => (
-        <Card fluid>
+        <Card fluid key={card._id}>
           <Card.Content>
             <h3>
               {card.name} [{card.year}~]
