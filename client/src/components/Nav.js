@@ -45,7 +45,7 @@ const Nav = () => {
             <div
               onClick={(event) => onClick(event)}
               style={
-                age === '고랴'
+                age === '고려'
                   ? { backgroundColor: 'black', color: 'white' }
                   : null
               }
