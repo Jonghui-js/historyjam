@@ -1,8 +1,6 @@
 # </> korean History Jam 개발 요약
 
-## 웹사이트
 
-[www.koreanhistoryjam.com](http://www.koreanhistoryjam.com)
 
 ## 기술
 
